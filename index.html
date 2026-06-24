@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihongo Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <main id="main-content">
+            <section id="home" class="view active">
+                <div class="glass-panel text-center">
+                    <h1>Chào mừng bạn!</h1>
+                    <p>Bắt đầu hành trình chinh phục tiếng Nhật ngay hôm nay.</p>
+                    <div class="stats-overview">
+                        <div class="stat-box">
+                            <span class="stat-label">XP Hiện tại</span>
+                            <strong id="home-xp">0</strong>
+                        </div>
+                    </div>
+                    <button class="btn primary" onclick="navigate('quiz')">Làm bài Quiz ngay</button>
+                </div>
+            </section>
+
+            <section id="kana" class="view">
+                <div class="flex-header">
+                    <h2>Bảng chữ cái</h2>
+                    <div class="tab-group">
+                        <button class="tab-btn active" onclick="switchKana('hiragana')">Hiragana</button>
+                        <button class="tab-btn" onclick="switchKana('katakana')">Katakana</button>
+                    </div>
+                </div>
+                <div id="kana-grid" class="grid-container"></div>
+            </section>
+
+            <section id="kanji" class="view">
+                <h2>Kanji Cơ bản</h2>
+                <div id="kanji-grid" class="list-container"></div>
+            </section>
+
+            <section id="flashcard" class="view">
+                <h2>Flashcard</h2>
+                <div class="flashcard-container">
+                    <div class="flashcard glass-panel" id="current-flashcard" onclick="flipCard()">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front" id="fc-front"></div>
+                            <div class="flashcard-back" id="fc-back"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn secondary" onclick="prevCard()">Trước</button>
+                    <button class="btn primary" onclick="nextCard()">Tiếp</button>
+                </div>
+            </section>
+
+            <section id="quiz" class="view">
+                <h2>Kiểm tra</h2>
+                <div class="glass-panel" id="quiz-container">
+                    <h3 id="quiz-question" class="text-center"></h3>
+                    <div id="quiz-options" class="options-grid"></div>
+                </div>
+                <div id="quiz-result" class="glass-panel hidden text-center">
+                    <h3 id="quiz-feedback"></h3>
+                    <button class="btn primary" onclick="initQuiz()">Câu tiếp theo</button>
+                </div>
+            </section>
+
+            <section id="dashboard" class="view">
+                <h2>Tiến độ của bạn</h2>
+                <div class="glass-panel">
+                    <div class="dashboard-stats">
+                        <div class="stat-circle">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" id="xp-progress" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="xp-text" id="dash-xp">0 XP</div>
+                        </div>
+                        <p class="text-center mt-4">Cố gắng đạt 1000 XP nhé!</p>
+                        <button class="btn danger mt-4 w-100" onclick="resetProgress()">Xóa dữ liệu</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav glass-panel">
+            <button class="nav-item active" onclick="navigate('home')">🏠<br>Home</button>
+            <button class="nav-item" onclick="navigate('kana')">あ<br>Kana</button>
+            <button class="nav-item" onclick="navigate('kanji')">漢<br>Kanji</button>
+            <button class="nav-item" onclick="navigate('flashcard')">🎴<br>Cards</button>
+            <button class="nav-item" onclick="navigate('dashboard')">📊<br>Hồ sơ</button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
